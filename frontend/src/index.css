@@ -7,6 +7,7 @@ body {
   background-attachment: fixed;
   overflow: auto;
   margin: 0px;
+  overscroll-behavior: none;
 }
 
 .center {

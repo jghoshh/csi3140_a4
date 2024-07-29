@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
-import '../App.css';
 import mediq from '../images/mediq.png';
 
 export function Login() {
@@ -13,44 +12,35 @@ export function Login() {
     const [userCode, setUserCode] = useState();
 
     const handleUserLogin = () => {
-        if (userCode == '123') {
-            fetch(`http://localhost:8000/api/patients/${userCode}`, {
-                method: "GET",
-                mode: "cors",
-                headers: {
-                    'Content-Type': 'application/json',
+        fetch(`http://localhost:8000/api/patients/${userCode}`, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('API Response:', data);
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    navigate({ pathname: "/user/" + userCode })
                 }
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('API Response:', data);
-                })
-                .catch(error => console.error('Error:', error));
-            //window.location.href = "pages/user.html";
-        } else {
-            alert("User does not exist");
-        }
+            .catch(error => console.error('Error:', error));
     }
 
     const handleAdminLogin = () => {
         if (adminUsername == 'admin' && adminPassword == 'admin') {
-            navigate("/admin");
-            //   fetch(`http://localhost:8000/api/admin/queues`, {
-            //     method: "GET",
-            //     mode: "cors",
-            //     headers: {
-            //       'Authorization': 'Basic ' + btoa(unescape(encodeURIComponent(adminUsername + ':' + adminPassword))),
-            //       'Content-Type': 'application/json',
-            //     }
-            //   })
-            //     .then(response => response.json())
-            //     .then(data => {
-            //       console.log('API Response:', data);
-            //     })
-            //     .catch(error => console.error('Error:', error));
-            // } else {
-            //   alert("Incorrect credentials. Please try again.");
-            // }
+            // Set encoded authorization
+            const encoded_info = btoa(unescape(encodeURIComponent(adminUsername + ':' + adminPassword)));
+
+            // reset info
+            setAdminUsername();
+            setAdminPassword();
+
+            navigate({ pathname: "/admin/" + encoded_info })
         }
     }
 
