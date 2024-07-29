@@ -57,3 +57,10 @@ CREATE TRIGGER before_insert_patient
 BEFORE INSERT ON patients
 FOR EACH ROW
 EXECUTE FUNCTION generate_unique_code();
+
+-- Fill patients table with default values
+INSERT INTO patients
+VALUES
+(NULL, 'John Doe', 'high', CURRENT_TIMESTAMP, 5, FALSE), 
+(NULL, 'Jane Dee', 'medium', CURRENT_TIMESTAMP, 17, FALSE), 
+(NULL, 'Quandale Humphrey', 'low', CURRENT_TIMESTAMP, 32, FALSE)
