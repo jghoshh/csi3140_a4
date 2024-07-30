@@ -48,6 +48,7 @@ export function Login() {
                 if (data.error) {
                     alert("Incorrect credentials.")
                 } else {
+                    localStorage.setItem('admin_key', encoded_info);
                     // reset info
                     setAdminUsername();
                     setAdminPassword();

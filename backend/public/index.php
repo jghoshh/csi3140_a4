@@ -41,6 +41,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(RouteCollector $r) {
     $r->addRoute('POST', '/api/patients', [PatientController::class, 'register']);
     $r->addRoute('GET', '/api/patients/{code}', [PatientController::class, 'getWaitTime']);
     $r->addRoute('GET', '/api/patients/info/{code}', [PatientController::class, 'getPatientInfo']);
+    $r->addRoute('PUT', '/api/patients/admit/{code}', [AdminController::class, 'admitPatient']);
     $r->addRoute('GET', '/api/admin/queues', [AdminController::class, 'getQueues']);
     $r->addRoute('PUT', '/api/admin/patients/{code}', [AdminController::class, 'updatePatientStatus']);
     $r->addRoute('PUT', '/api/admin/wait-times', [AdminController::class, 'updateWaitTimes']);
