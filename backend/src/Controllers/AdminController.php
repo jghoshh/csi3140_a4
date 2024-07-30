@@ -240,4 +240,31 @@ class AdminController
       echo json_encode(['message' => 'No wait times needed updating']);
     }
   }
+
+  public static function admitPatient($code)
+  {
+    if (!self::authenticateAdmin()) {
+      return;
+    }
+
+    $db = self::getDb();
+
+    $updateQuery = "DELETE FROM patients WHERE code = ?";
+
+    $stmt = $db->prepare($updateQuery);
+    if (!$stmt->execute([$code])) {
+      http_response_code(500);
+      echo json_encode(['error' => 'Failed to update patients']);
+      return;
+    }
+
+    $affectedRows = $stmt->rowCount();
+    if ($affectedRows > 0) {
+      http_response_code(200);
+      echo json_encode(['message' => 'Patient admitted successfully']);
+    } else {
+      http_response_code(200);
+      echo json_encode(['message' => 'No changes made']);
+    }
+  }
 }

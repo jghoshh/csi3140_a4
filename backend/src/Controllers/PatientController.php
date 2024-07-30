@@ -77,4 +77,34 @@ class PatientController
       echo json_encode(['error' => 'No patient found with the provided code']);
     }
   }
+
+  public static function getPatientInfo($code) {
+    $db = self::getDb();
+    $stmt = $db->prepare("SELECT * FROM patients WHERE code = ?");
+
+    if (!$stmt->execute([$code])) {
+      http_response_code(500);
+      echo json_encode(['error' => 'Internal server error while querying the database']);
+      return;
+    }
+
+    $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+    if ($result) {
+      http_response_code(200);
+      echo json_encode(
+        [
+          'message' => 'Patient found',
+          'code' => $result['code'],
+          'name' => $result['name'],
+          'severity' => $result['severity'],
+          'arrival_time' => $result['arrival_time'],
+          'wait_time' => $result['estimated_wait_time'],
+          'is_treated' => $result['is_treated']
+        ]
+      );
+    } else {
+      http_response_code(404);
+      echo json_encode(['error' => 'No patient found with the provided code']);
+    }
+  }
 }
