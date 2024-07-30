@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 
 import './styles.css'
-
+import { AdminNavbar } from "../components/AdminNavbar";
 import { PatientRow } from "../components/PatientRow";
 
 export function AdminPage() {
@@ -12,7 +12,6 @@ export function AdminPage() {
     const [patients, setPatients] = useState();
 
     useEffect(() => {
-        console.log(auth);
         fetch(`http://localhost:8000/api/admin/queues`, {
             method: "GET",
             mode: "cors",
@@ -24,32 +23,32 @@ export function AdminPage() {
             .then(response => response.json())
             .then(data => {
                 console.log('API Response:', data);
-                if (data.error) {
-                    navigate({ pathname: "/" });
-                } else {
+                if (!data.error) {
                     setPatients(data);
-                    console.log(patients.severity_queue);
                 }
             })
             .catch(error => {
-
+                console.log(error);
             });
     }, []);
 
     return (
-        <div className="container">
-            {patients ?
-                <>
-                    <h1>Patients</h1>
-                    <div className="patient_table">
-                        {patients.severity_queue.map((patient, i) =>
-                            <PatientRow key={i} patient={patient} />
-                        )}
-                    </div>
-                </>
-                :
-                <div>Invalid Autorization.</div>
-            }
-        </div>
+        <>
+            <AdminNavbar />
+            <div className="container">
+                {patients ?
+                    <>
+                        <h1>Patients</h1>
+                        <div className="patient_table">
+                            {patients.severity_queue.map((patient, i) =>
+                                <PatientRow key={i} patient={patient} />
+                            )}
+                        </div>
+                    </>
+                    :
+                    <div>Invalid Authorization.</div>
+                }
+            </div>
+        </>
     );
 }

@@ -2,7 +2,7 @@
 
 body {
   font-family: Inter, sans-serif;
-  background-image: linear-gradient(white, grey);
+  background-image: linear-gradient(white, rgb(189, 189, 189));
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow: auto;

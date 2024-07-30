@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { Login } from './pages/Login';
 import { AdminPage } from './pages/AdminPage';
+import { UserPage } from './pages/UserPage';
 import { Footer } from './components/Footer';
 
 export default function App() {
@@ -14,13 +15,5 @@ export default function App() {
       </Routes>
       <Footer />
     </>
-  );
-}
-
-function UserPage() {
-  return (
-    <div>
-      <p>This is the user page.</p>
-    </div>
   );
 }

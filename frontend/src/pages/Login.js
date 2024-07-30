@@ -32,16 +32,32 @@ export function Login() {
     }
 
     const handleAdminLogin = () => {
-        if (adminUsername == 'admin' && adminPassword == 'admin') {
-            // Set encoded authorization
-            const encoded_info = btoa(unescape(encodeURIComponent(adminUsername + ':' + adminPassword)));
+        // Set encoded authorization
+        const encoded_info = btoa(unescape(encodeURIComponent(adminUsername + ':' + adminPassword)));
 
-            // reset info
-            setAdminUsername();
-            setAdminPassword();
+        fetch(`http://localhost:8000/api/admin/queues`, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                'Authorization': 'Basic ' + encoded_info,
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert("Incorrect credentials.")
+                } else {
+                    // reset info
+                    setAdminUsername();
+                    setAdminPassword();
 
-            navigate({ pathname: "/admin/" + encoded_info })
-        }
+                    navigate({ pathname: "/admin/" + encoded_info })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     return (

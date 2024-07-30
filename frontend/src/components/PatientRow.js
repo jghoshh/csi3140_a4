@@ -1,5 +1,6 @@
 import { CgProfile } from "react-icons/cg";
 
+import { Severity } from "./Severity";
 import './component_styles.css';
 
 export function PatientRow({ patient }) {
@@ -10,7 +11,7 @@ export function PatientRow({ patient }) {
             </div>
             <div className="cell" style={{ width: '10%' }}><b>Code: </b>{patient.code}</div>
             <div className="cell" style={{ width: '20%' }}><b>Name: </b>{patient.name}</div>
-            <div className="cell" style={{ width: '15%' }}><b>Severity: </b>{patient.severity}</div>
+            <div className="cell" style={{ width: '15%' }}><Severity severity={patient.severity} textSize={14} /></div>
             <div className="cell" style={{ width: '15%' }}><b>Wait time: </b>{patient.estimated_wait_time} minutes</div>
         </div>
     )

@@ -3,11 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 93vh;
   width: 100vw;
 }
 
 .patient_table {
   width: 90%;
+  height: 80%;
   overflow: scroll;
 }
