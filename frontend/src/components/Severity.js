@@ -8,7 +8,7 @@ export function Severity({ severity, textSize }) {
             style={{
                 fontSize: `${textSize}px`,
                 color: 'white',
-                backgroundColor: severity == 'low' ? 'green' : severity == 'medium' ? 'orange' : 'red',
+                backgroundColor: severity == 'low' ? 'green' : severity == 'medium' ? '#bd631e' : 'red',
                 borderRadius: '20px',
                 padding: `${textSize - 10}px`,
                 display: 'flex',
