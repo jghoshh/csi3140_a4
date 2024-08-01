@@ -74,7 +74,7 @@ export function Login() {
                         <img src={mediq} />
                         <h2>Welcome!</h2>
                         <p>Select login type</p>
-                        <button type="button" onClick={() => setLoginType('user')}>User</button>
+                        <button type="button" onClick={() => setLoginType('user')}>Patient</button>
                         <button type="button" onClick={() => setLoginType('admin')}>Admin</button>
                     </div>
                 )}
@@ -82,7 +82,7 @@ export function Login() {
                 {loginType === 'user' && (
                     <div className="login" id="user_login">
                         <img src={mediq} />
-                        <h2>Welcome, User!</h2>
+                        <h2>Welcome, Patient!</h2>
                         <p>Please log in</p>
                         <input type="text" placeholder="User Code" id="user_code" onChange={e => setUserCode(e.target.value)} />
                         <button type="button" onClick={handleUserLogin}>Log In</button>

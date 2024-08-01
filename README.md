@@ -3,7 +3,14 @@
 This web application was made for assignment 4 of CSI3140 by Jay Ghosh and Noah do Régo. The admin user can add/admit patients to the triage queue,
 and patients can log in using their assigned user code to see their wait time and severity.
 
-> Note: The current version does not involve dynamically updating wait times for demonstration purposes.
+**Please note that the patient wait times update as follows:**
+
+| When patients are added   | When patients are admitted |
+| ------------------------- | -------------------------- |
+| Critical severity: +5 min | Critical severity: -20 min |
+| High severity: +10 min    | High severity: -15 min     |
+| Medium severity +15 min   | Medium severity -10 min    |
+| Low severity +20 min      | Low severity -5 min        |
 
 ## Installation
 
@@ -48,10 +55,26 @@ npm start # this will start your react app
 - **To login as admin, use the following credentials: username = admin, password = adminCSI3140**
 - To login as a user, use one of the user codes from the admin view
 
-## UI Images
+## App Layout
+
+Users must select the login type that they desire (patient/admin)
+
+Admins must login with the appropriate credentials (username: admin / password: adminCSI3140)
+
+Users must login with their assigned user code (can be viewed from the admin page).
 
 ![Login Page UI](./frontend/src/images/login.png)
 
-![Admin Page UI](./frontend/src/images/adminpage.png)
+### Admin Layout
+
+Admins can add patients using the "Add Patient" button at the top right
+
+Admins can view the queue of patients and admit them by selecting the checkmark next to a specific user's row.
+
+![Admin Page UI](./frontend/src/images/adminpage.png)\
+
+### Patient Layout
+
+Patients can login using their assigned user code to view their estimated wait time and other details.
 
 ![User Page UI](./frontend/src/images/userpage.png)
