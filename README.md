@@ -144,7 +144,7 @@ Patients can login using their assigned user code to view their estimated wait t
 
 ![User Page UI](./frontend/src/images/userpage.png)
 
-### Database Schema Layout (example)
+### Database Schema Layout
 
 An attached example of database schema layout for the patients table populated with fake data.
 
