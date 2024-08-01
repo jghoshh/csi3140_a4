@@ -9,7 +9,6 @@ class DatabaseService
 {
   private static $instance = null;
   private $connection;
-
   private function __construct()
   {
     $host = $_ENV['DB_HOST'];
@@ -17,7 +16,6 @@ class DatabaseService
     $dbname = $_ENV['DB_NAME'];
     $user = $_ENV['DB_USER'];
     $password = $_ENV['DB_PASSWORD'];
-
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
 
     try {

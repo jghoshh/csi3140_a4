@@ -10,7 +10,7 @@ class AdminController
   {
     return DatabaseService::getInstance()->getConnection();
   }
-
+  // Authenticates the admin user (re-used in all other functions to act as the auth layer)
   private static function authenticateAdmin()
   {
     $headers = getallheaders();
@@ -51,7 +51,7 @@ class AdminController
 
     return true;
   }
-
+  // Gets the different wait queues, i.e. different representations of the patients based on different dimensions.
   public static function getQueues()
   {
 
@@ -105,7 +105,7 @@ class AdminController
     http_response_code(200);
     echo json_encode($result);
   }
-
+  // Updates a patient status (treated or not treated)
   public static function updatePatientStatus($code)
   {
 
@@ -151,7 +151,7 @@ class AdminController
       ]
     ]);
   }
-
+  // Updates wait times for the patients based on their severity
   public static function updateWaitTimes()
   {
     if (!self::authenticateAdmin()) {
@@ -234,7 +234,7 @@ class AdminController
       echo json_encode(['message' => 'No wait times needed updating']);
     }
   }
-
+  // Admits a new pateint into the system
   public static function admitPatient($code)
   {
     if (!self::authenticateAdmin()) {

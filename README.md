@@ -1,7 +1,7 @@
 # Hospital Triage Application (CSI3140 A4)
 
 This web application was made for assignment 4 of CSI3140 by Jay Ghosh and Noah do Régo. The admin user can add/admit patients to the triage queue,
-and patients can log in using their assigned user code to see their wait time and severity.
+and patients can log in using their assigned user code to see their wait time and severity. 
 
 **Please note that the patient wait times update as follows:**
 
@@ -11,6 +11,8 @@ and patients can log in using their assigned user code to see their wait time an
 | High severity: +10 min    | High severity: -15 min     |
 | Medium severity +15 min   | Medium severity -10 min    |
 | Low severity +20 min      | Low severity -5 min        |
+
+**In accordance with Professor Kalonji Kalala's permission, we have used ReactJS for the frontend, PHP for the backend (with Composer), and Postgres for the database.**
 
 ## Installation
 
@@ -24,7 +26,7 @@ The following libraries, frameworks and tools must be installed in order to run 
 
 ### Setting Up the Backend Application
 
-Navigate to the `backend` directory. Then run the command `composer update`.
+Navigate to the `backend` directory. Then run the command `composer update` to install and update dependencies.
 
 For this project, Postgres is being used for DB management. To properly set up and access the backend application, create the following file at the specific path: `backend/backend.env`.
 
@@ -38,8 +40,10 @@ DB_USER=<your-db-user>
 DB_PASSWORD=<your-db-password>
 ```
 
-After the empty db is setup, you can run the code in `setup.sql` to define the db tables and data. You can either run it using the psql terminal, or navigate to the correct db in pgAdmin
-and copy/paste the code into the Query Tool (right-click public schema -> Query tool), then run the code.
+*IMPORTANT*: After the empty db is setup, please run the code in `setup.sql` to define the db tables and data. You can either run it using the psql terminal, or navigate to the correct db in pgAdmin
+and copy/paste the code into the Query Tool (right-click public schema -> Query tool), then run the code. **If you don't do this step, the application will NOT work, because there will be no schema populated in the database to work with.**
+
+Finally, to run the PHP backend server, navigate to `backend/public` and run the commmand `php -S localhost:<port>`, which starts the backend server on port `<port>` of your machine.
 
 ### Setting Up the Frontend Application
 
@@ -49,6 +53,8 @@ Navigate to the `frontend` directory. Then, run the following commands:
 npm install # this will create node_modules folder and package-lock.json
 npm start # this will start your react app
 ```
+
+**After these exact steps have been completed, you should be able to access the whole application through the specified port outputted on** `npm start`
 
 ## Logins
 
@@ -71,7 +77,7 @@ Admins can add patients using the "Add Patient" button at the top right
 
 Admins can view the queue of patients and admit them by selecting the checkmark next to a specific user's row.
 
-![Admin Page UI](./frontend/src/images/adminpage.png)\
+![Admin Page UI](./frontend/src/images/adminpage.png)
 
 ### Patient Layout
 

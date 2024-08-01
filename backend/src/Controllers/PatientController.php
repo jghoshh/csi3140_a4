@@ -10,7 +10,7 @@ class PatientController
   {
     return DatabaseService::getInstance()->getConnection();
   }
-
+  // Registers a new patient
   public static function register()
   {
     $db = self::getDb();
@@ -51,7 +51,7 @@ class PatientController
       }
     }
   }
-
+  // Gets the wait time for a patient based on their code
   public static function getWaitTime($code)
   {
     $db = self::getDb();
@@ -77,7 +77,7 @@ class PatientController
       echo json_encode(['error' => 'No patient found with the provided code']);
     }
   }
-
+  // Gets all the information about a patient based on their code
   public static function getPatientInfo($code) {
     $db = self::getDb();
     $stmt = $db->prepare("SELECT * FROM patients WHERE code = ?");
