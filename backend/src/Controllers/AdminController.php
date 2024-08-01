@@ -96,12 +96,6 @@ class AdminController
               minutes_in_queue DESC
       ")->fetchAll(\PDO::FETCH_ASSOC);
 
-    if (!$severityQueue || !$waitTimeQueue || !$combinedQueue) {
-      http_response_code(500);
-      echo json_encode(['error' => 'Internal server error while querying the database']);
-      return;
-    }
-
     $result = [
       'severity_queue' => $severityQueue,
       'wait_time_queue' => $waitTimeQueue,
