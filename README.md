@@ -143,3 +143,9 @@ Admins can view the queue of patients and admit them by selecting the checkmark 
 Patients can login using their assigned user code to view their estimated wait time and other details.
 
 ![User Page UI](./frontend/src/images/userpage.png)
+
+### Database Schema Layout (example)
+
+![Database Schema](./frontend/src/images/database_schema.png)
+
+
