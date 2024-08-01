@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import './styles.css'
 import { AdminNavbar } from "../components/AdminNavbar";
@@ -8,10 +8,11 @@ import { PatientRow } from "../components/PatientRow";
 export function AdminPage() {
     let { auth } = useParams();
 
-    const navigate = useNavigate;
+    // Define state
     const [patients, setPatients] = useState();
 
     useEffect(() => {
+        // Get queue data on first render
         fetch(`http://localhost:8000/api/admin/queues`, {
             method: "GET",
             mode: "cors",
@@ -22,7 +23,7 @@ export function AdminPage() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('API Response:', data);
+                // Set state to data if no errors occur
                 if (!data.error) {
                     setPatients(data);
                 }
@@ -36,6 +37,7 @@ export function AdminPage() {
         <>
             <AdminNavbar />
             <div className="container">
+                {/* Render patient data if state is set */}
                 {patients ?
                     <>
                         <h1>Patients</h1>

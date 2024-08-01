@@ -46,7 +46,7 @@ npm start # this will start your react app
 ## Logins
 
 - **To login as admin, use the following credentials: username = admin, password = adminCSI3140**
-- To login as a user, use one of the user codes from the admin view (default: bcb, e00, 9db)
+- To login as a user, use one of the user codes from the admin view
 
 ## UI Images
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -10,10 +10,11 @@ import { UserNavbar } from "../components/UserNavbar";
 export function UserPage() {
     let { userId } = useParams();
 
-    const navigate = useNavigate;
+    // Define state
     const [patientInfo, setPatientInfo] = useState();
 
     useEffect(() => {
+        // Get info for specific user
         fetch(`http://localhost:8000/api/patients/info/` + userId, {
             method: "GET",
             mode: "cors",
@@ -24,7 +25,6 @@ export function UserPage() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 setPatientInfo(data);
             })
             .catch(error => {

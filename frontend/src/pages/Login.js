@@ -6,12 +6,15 @@ import mediq from '../images/mediq.png';
 export function Login() {
     const navigate = useNavigate();
 
+    // Define state
     const [loginType, setLoginType] = useState('');
     const [adminUsername, setAdminUsername] = useState();
     const [adminPassword, setAdminPassword] = useState();
     const [userCode, setUserCode] = useState();
 
+    // Handles login as user
     const handleUserLogin = () => {
+        // Fetch with inputted usercode to check if valid
         fetch(`http://localhost:8000/api/patients/${userCode}`, {
             method: "GET",
             mode: "cors",
@@ -21,7 +24,6 @@ export function Login() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('API Response:', data);
                 if (data.error) {
                     alert(data.error);
                 } else {
@@ -31,10 +33,12 @@ export function Login() {
             .catch(error => console.error('Error:', error));
     }
 
+    // Handles login as admin
     const handleAdminLogin = () => {
         // Set encoded authorization
         const encoded_info = btoa(unescape(encodeURIComponent(adminUsername + ':' + adminPassword)));
 
+        // Fetch with admin auth to check if valid
         fetch(`http://localhost:8000/api/admin/queues`, {
             method: "GET",
             mode: "cors",
@@ -53,6 +57,7 @@ export function Login() {
                     setAdminUsername();
                     setAdminPassword();
 
+                    // navigate to admin page
                     navigate({ pathname: "/admin/" + encoded_info })
                 }
             })
