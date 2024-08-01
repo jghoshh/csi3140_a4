@@ -6,10 +6,12 @@ import { Severity } from "./Severity";
 import { Button } from "./Button";
 import './component_styles.css';
 
+// Component for displaying patient data
 export function PatientRow({ patient }) {
     const navigate = useNavigate();
     const admin_key = localStorage.getItem('admin_key');
 
+    // Handles admitting a patient (remove from queue)
     const admitPatient = () => {
         fetch(`http://localhost:8000/api/patients/admit/${patient.code}`, {
             method: "PUT",

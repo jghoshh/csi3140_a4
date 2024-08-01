@@ -6,6 +6,7 @@ import { UserPage } from './pages/UserPage';
 import { Footer } from './components/Footer';
 
 export default function App() {
+  // Define app routes
   return (
     <>
       <Routes>

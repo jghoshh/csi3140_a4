@@ -3,6 +3,7 @@ import { IoAddCircleOutline } from "react-icons/io5";
 
 import './component_styles.css';
 
+// Default template for buttons (Icon + Text)
 export function Button({ text, buttonIcon, backgroundColor, textColor, action }) {
     return (
         <div

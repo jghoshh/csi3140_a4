@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import './component_styles.css';
 import { Button } from "./Button";
 
+// Admin navbar component
 export function AdminNavbar() {
     const navigate = useNavigate();
 
+    // Handles adding a patient through prompt inputs
     const addPatient = () => {
         const severity_options = ["low", "medium", "high", "critical"]
         const name = prompt("Enter patient name");

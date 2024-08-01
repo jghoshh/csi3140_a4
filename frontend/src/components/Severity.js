@@ -2,6 +2,7 @@ import { IoWarningOutline } from "react-icons/io5";
 
 import './component_styles.css';
 
+// Severity display component
 export function Severity({ severity, textSize }) {
     return (
         <div
