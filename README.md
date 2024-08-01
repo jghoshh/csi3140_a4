@@ -61,6 +61,65 @@ npm start # this will start your react app
 - **To login as admin, use the following credentials: username = admin, password = adminCSI3140**
 - To login as a user, use one of the user codes from the admin view
 
+## Project Structure (important dirs & files)
+## backend/
+Backend application directory.
+
+### db/
+Database-related files.
+- setup.sql: SQL script for database setup.
+
+### public/
+Publicly accessible files.
+- index.php: Entry point for the backend application.
+
+### src/
+Source code for the backend.
+
+#### Controllers/
+Contains controller classes that handle requests and responses.
+- AdminController.php: Handles admin-related operations.
+- PatientController.php: Manages patient-related operations.
+
+#### Services/
+Service classes for business logic.
+- DatabaseService.php: Manages database operations.
+
+## frontend/
+Frontend application directory.
+
+### public/
+Publicly accessible files for the frontend.
+
+### src/
+Source code for the frontend.
+
+### components/
+Reusable React components.
+- AdminNavbar.js: Navigation bar component for admin interface.
+- Button.js: Reusable button component.
+- component_styles.css: CSS styles for components.
+- Footer.js: Footer component.
+- PatientRow.js: Component for displaying patient information in a row.
+- Severity.js: Component related to severity levels.
+- UserNavbar.js: Navigation bar component for user interface.
+
+### images/
+Static images used in the application.
+
+### pages/
+React components representing different pages of the application.
+- AdminPage.js: Admin dashboard or admin-specific page.
+- Login.js: Login page component.
+- styles.css: CSS styles specific to pages.
+- UserPage.js: User dashboard or user-specific page.
+
+### App.js
+Main React component that serves as the root of the application.
+
+### index.css
+Global CSS styles for the application.
+
 ## App Layout
 
 Users must select the login type that they desire (patient/admin)
