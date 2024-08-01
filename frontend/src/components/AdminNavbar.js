@@ -7,6 +7,7 @@ import { Button } from "./Button";
 // Admin navbar component
 export function AdminNavbar() {
     const navigate = useNavigate();
+    const admin_key = localStorage.getItem('admin_key');
 
     // Handles adding a patient through prompt inputs
     const addPatient = () => {
@@ -25,7 +26,26 @@ export function AdminNavbar() {
             })
                 .then(response => response.json())
                 .then(data => {
-                    navigate(0);
+                    fetch(`http://localhost:8000/api/admin/wait-times`, {
+                        method: "PUT",
+                        mode: "cors",
+                        headers: {
+                            'Authorization': 'Basic ' + admin_key,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            'critical': 5,
+                            'high': 10,
+                            'medium': 15,
+                            'low': 20
+                        }),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            //navigate(0);
+                        })
+                        .catch(error => console.error('Error:', error));
                 })
                 .catch(error => console.error('Error:', error));
         } else {

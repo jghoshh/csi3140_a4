@@ -207,14 +207,14 @@ class AdminController
 
     $updateQuery = "
           UPDATE patients
-          SET estimated_wait_time = estimated_wait_time +
+          SET estimated_wait_time = GREATEST(estimated_wait_time +
               CASE severity
                   WHEN 'critical' THEN ?
                   WHEN 'high' THEN ?
                   WHEN 'medium' THEN ?
                   WHEN 'low' THEN ?
                   ELSE 0
-              END
+              END, 0)
           WHERE is_treated = false";
 
     $stmt = $db->prepare($updateQuery);

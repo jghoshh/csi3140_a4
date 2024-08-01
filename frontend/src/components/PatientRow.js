@@ -23,7 +23,26 @@ export function PatientRow({ patient }) {
         })
             .then(response => response.json())
             .then(data => {
-                navigate(0);
+                fetch(`http://localhost:8000/api/admin/wait-times`, {
+                    method: "PUT",
+                    mode: "cors",
+                    headers: {
+                        'Authorization': 'Basic ' + admin_key,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        'critical': -20,
+                        'high': -15,
+                        'medium': -10,
+                        'low': -5
+                    }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        //navigate(0);
+                    })
+                    .catch(error => console.error('Error:', error));
             })
             .catch(error => console.error('Error:', error));
     }
