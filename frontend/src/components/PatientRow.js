@@ -40,7 +40,7 @@ export function PatientRow({ patient }) {
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
-                        //navigate(0);
+                        navigate(0);
                     })
                     .catch(error => console.error('Error:', error));
             })
