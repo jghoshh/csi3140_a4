@@ -14,6 +14,8 @@ and patients can log in using their assigned user code to see their wait time an
 
 **In accordance with Professor Kalonji Kalala's permission, we have used ReactJS for the frontend, PHP for the backend (with Composer), and Postgres for the database.**
 
+**Note:** A demo video of the application is provided in the file `csi3140_a4_demo.mov`
+
 ## Installation
 
 ### Prerequisites
