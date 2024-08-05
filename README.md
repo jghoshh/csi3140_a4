@@ -45,7 +45,7 @@ DB_PASSWORD=<your-db-password>
 *IMPORTANT*: After the empty db is setup, please run the code in `setup.sql` to define the db tables and data. You can either run it using the psql terminal, or navigate to the correct db in pgAdmin
 and copy/paste the code into the Query Tool (right-click public schema -> Query tool), then run the code. **If you don't do this step, the application will NOT work, because there will be no schema populated in the database to work with.**
 
-Finally, to run the PHP backend server, navigate to `backend/public` and run the commmand `php -S localhost:<port>`, which starts the backend server on port `<port>` of your machine.
+Finally, to run the PHP backend server, navigate to `backend/public` and run the commmand `php -S localhost:8000`, which starts the backend server on port 8000 of your machine. **You must choose and run your server on port 8000, since the front-end only requests to port 8000.**
 
 ### Setting Up the Frontend Application
 
